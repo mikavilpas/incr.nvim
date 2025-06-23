@@ -7,8 +7,8 @@ local function get_node_at_cursor()
   local row = cursor[1] - 1
   local col = cursor[2]
 
-  local root_parser = vim.treesitter.get_parser()
-  if not root_parser then
+  local ok, root_parser = pcall(vim.treesitter.get_parser, 0, nil, {})
+  if not ok or not root_parser then
     return
   end
 
@@ -74,9 +74,8 @@ M.setup = function(config)
         if root_searched then
           return
         end
-
-        local root_parser = vim.treesitter.get_parser()
-        if root_parser == nil then
+        local ok, root_parser = pcall(vim.treesitter.get_parser)
+        if not ok or root_parser == nil then
           return
         end
         root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
