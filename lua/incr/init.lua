@@ -8,16 +8,20 @@ local function get_node_at_cursor()
   local col = cursor[2]
 
   local root_parser = vim.treesitter.get_parser()
-  if not root_parser then return end
+  if not root_parser then
+    return
+  end
 
-  root_parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" }
+  root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
   local lang_tree = root_parser:language_for_range({ row, col, row, col })
 
   return lang_tree:named_node_for_range({ row, col, row, col }, { ignore_injections = false })
 end
 
 local function select_node(node)
-  if not node then return end
+  if not node then
+    return
+  end
   local start_row, start_col, end_row, end_col = node:range()
 
   local last_line = vim.api.nvim_buf_line_count(0)
@@ -39,25 +43,28 @@ M.setup = function(config)
   local incr_key = config.incr_key and config.incr_key or '<tab>'
   local decr_key = config.decr_key and config.decr_key or '<s-tab>'
 
-  vim.keymap.set({ "n" }, incr_key, function()
+  vim.keymap.set({ 'n' }, incr_key, function()
     _G.selected_nodes = {}
 
     local current_node = get_node_at_cursor()
-    if not current_node then return end
+    if not current_node then
+      return
+    end
 
     table.insert(_G.selected_nodes, current_node)
     select_node(current_node)
-  end, { desc = "Select treesitter node" })
+  end, { desc = 'Select treesitter node' })
 
-
-  vim.keymap.set("x", incr_key, function()
+  vim.keymap.set('x', incr_key, function()
     if #_G.selected_nodes == 0 then
       return
     end
 
     local current_node = _G.selected_nodes[#_G.selected_nodes]
 
-    if not current_node then return end
+    if not current_node then
+      return
+    end
 
     local node = current_node
     local root_searched = false
@@ -69,15 +76,19 @@ M.setup = function(config)
         end
 
         local root_parser = vim.treesitter.get_parser()
-        if root_parser == nil then return end
-        root_parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" }
+        if root_parser == nil then
+          return
+        end
+        root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
 
         local range = { node:range() }
         local current_parser = root_parser:language_for_range(range)
 
         if root_parser ~= current_parser then
           local parser = current_parser:parent()
-          if parser == nil then return end
+          if parser == nil then
+            return
+          end
           current_parser = parser
         end
 
@@ -86,7 +97,9 @@ M.setup = function(config)
         end
 
         parent = current_parser:named_node_for_range(range)
-        if parent == nil then return end
+        if parent == nil then
+          return
+        end
       end
 
       local range = { node:range() }
@@ -98,9 +111,9 @@ M.setup = function(config)
       end
       node = parent
     end
-  end, { desc = "Increment selection" })
+  end, { desc = 'Increment selection' })
 
-  vim.keymap.set("x", decr_key, function()
+  vim.keymap.set('x', decr_key, function()
     if #_G.selected_nodes > 1 then
       table.remove(_G.selected_nodes)
       local current_node = _G.selected_nodes[#_G.selected_nodes]
@@ -108,7 +121,7 @@ M.setup = function(config)
         select_node(current_node)
       end
     end
-  end, { desc = "Decrement selection" })
+  end, { desc = 'Decrement selection' })
 end
 
 return M
