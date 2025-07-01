@@ -12,7 +12,7 @@ local function get_node_at_cursor()
     return
   end
 
-  root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
+  root_parser:parse()
   local lang_tree = root_parser:language_for_range({ row, col, row, col })
 
   return lang_tree:named_node_for_range({ row, col, row, col }, { ignore_injections = false })
@@ -78,7 +78,7 @@ M.setup = function(config)
         if not ok or root_parser == nil then
           return
         end
-        root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
+        root_parser:parse()
 
         local range = { node:range() }
         local current_parser = root_parser:language_for_range(range)
