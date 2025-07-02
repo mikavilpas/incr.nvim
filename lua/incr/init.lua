@@ -44,7 +44,7 @@ local function select_node(node)
 
   vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
   vim.cmd('normal! o')
-  vim.api.nvim_win_set_cursor(0, { end_row_pos, end_col_pos - 1 })
+  vim.api.nvim_win_set_cursor(0, { end_row_pos, end_col_pos > 0 and end_col_pos - 1 or 0 })
 end
 
 M.setup = function(config)
