@@ -12,7 +12,7 @@ local function get_node_at_cursor()
     return
   end
 
-  root_parser:parse()
+  root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
   local lang_tree = root_parser:language_for_range({ row, col, row, col })
 
   return lang_tree:named_node_for_range({ row, col, row, col }, { ignore_injections = false })
@@ -33,10 +33,18 @@ local function select_node(node)
     end_col_pos = #last_line_text
   end
 
-  vim.fn.setpos("'<", { 0, start_row + 1, start_col + 1, 0 })
-  vim.fn.setpos("'>", { 0, end_row_pos, end_col_pos, 0 })
+  -- enter visual mode if normal or operator-pending (no) mode
+  -- Why? According to https://learnvimscriptthehardway.stevelosh.com/chapters/15.html
+  --   If your operator-pending mapping ends with some text visually selected, Vim will operate on that text.
+  --   Otherwise, Vim will operate on the text between the original cursor position and the new position.
+  local mode = vim.api.nvim_get_mode()
+  if mode.mode ~= 'v' then
+    vim.api.nvim_cmd({ cmd = 'normal', bang = true, args = { 'v' } }, {})
+  end
 
-  vim.cmd('normal! gv')
+  vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
+  vim.cmd('normal! o')
+  vim.api.nvim_win_set_cursor(0, { end_row_pos, end_col_pos - 1 })
 end
 
 M.setup = function(config)
@@ -78,7 +86,7 @@ M.setup = function(config)
         if not ok or root_parser == nil then
           return
         end
-        root_parser:parse()
+        root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
 
         local range = { node:range() }
         local current_parser = root_parser:language_for_range(range)
