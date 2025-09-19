@@ -30,7 +30,7 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
 
-      - uses: rhysd/action-setup-vim@v1
+      - uses: rhysd/action-setup-vim@89f3345bcde053529463583418779d83ee6dfb33 # v1
         with:
           neovim: true
           version: ${{ matrix.neovim_version }}
