@@ -1,0 +1,3 @@
+node_modules
+integration-tests/test-environment/.repro/data/nvim/lazy
+integration-tests/test-environment/testdirs

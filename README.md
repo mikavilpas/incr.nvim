@@ -30,13 +30,13 @@ If you want to override default keys then use something like this:
 ## History
 
 nvim-treesitter main branch drop increment selection feature. From
-https://github.com/nvim-treesitter/nvim-treesitter/issues/4767#issue-1698676665:
+<https://github.com/nvim-treesitter/nvim-treesitter/issues/4767#issue-1698676665>:
 
-> incremental-selection mostly served as a proof-of-concept for
-> non-highlighting uses of tree-sitter; if people are actively using it, they
-> should consider moving it to a separate plugin (or seeing if textobjects
-> don't serve this purposes even better); alternatively rewrite as simple node
-> and scope textobjects;
+> incremental-selection mostly served as a proof-of-concept for non-highlighting
+> uses of tree-sitter; if people are actively using it, they should consider
+> moving it to a separate plugin (or seeing if textobjects don't serve this
+> purposes even better); alternatively rewrite as simple node and scope
+> textobjects;
 
 This is basically gist of it. Initially I have tried to move this to my nvim
 configuration as simple solution, but found out that simple solution was lacking
