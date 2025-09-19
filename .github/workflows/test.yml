@@ -30,6 +30,11 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
 
+      - uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.neovim_version }}
+
       - working-directory: integration-tests
         name: Prepare Neovim for e2e tests
         run: pnpm tui neovim prepare
