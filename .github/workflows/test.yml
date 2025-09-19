@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: "Test (neovim ${{ matrix.neovim_version }}"
+    name: "Test (neovim ${{ matrix.neovim_version }})"
     runs-on: ubuntu-latest
     strategy:
       matrix:
