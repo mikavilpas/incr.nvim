@@ -16,22 +16,22 @@ select more scope. You can use `s-tab` to decrement selection.
 Using lazyvim.
 
 ```lua
-  {
-    'daliusd/incr.nvim',
-    config = true,
-  },
+{
+  'mikavilpas/incr.nvim',
+  config = true,
+},
 ```
 
 If you want to override default keys then use something like this:
 
 ```lua
-  {
-    'daliusd/incr.nvim',
-    opts = {
-        incr_key = '<tab>', -- increment selection key
-        decr_key = '<s-tab>', -- decrement selection key
-    },
-  }
+{
+  'mikavilpas/incr.nvim',
+  opts = {
+    incr_key = '<tab>', -- increment selection key
+    decr_key = '<s-tab>', -- decrement selection key
+  },
+}
 ```
 
 ## History
