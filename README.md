@@ -1,5 +1,12 @@
 # incr.nvim
 
+> This is a @mikavilpas fork from <https://github.com/daliusd/incr.nvim>.
+>
+> The additions include
+>
+> - export all functions for easier usage in custom mappings
+> - add end-to-end tests for easy maintainability
+
 This plugin uses nvim-treesitter to select nodes incrementally. You can start
 selection in normal mode by clicking `tab` and then repeatedly clicking `tab`
 select more scope. You can use `s-tab` to decrement selection.
