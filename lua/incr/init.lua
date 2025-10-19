@@ -12,10 +12,13 @@ local function get_node_at_cursor()
     return
   end
 
-  root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
+  root_parser:parse({ vim.fn.line("w0") - 1, vim.fn.line("w$") })
   local lang_tree = root_parser:language_for_range({ row, col, row, col })
 
-  return lang_tree:named_node_for_range({ row, col, row, col }, { ignore_injections = false })
+  return lang_tree:named_node_for_range(
+    { row, col, row, col },
+    { ignore_injections = false }
+  )
 end
 
 local function select_node(node)
@@ -29,7 +32,8 @@ local function select_node(node)
   local end_col_pos = end_col
 
   if end_row + 1 > last_line then
-    local last_line_text = vim.api.nvim_buf_get_lines(0, last_line - 1, last_line, true)[1]
+    local last_line_text =
+      vim.api.nvim_buf_get_lines(0, last_line - 1, last_line, true)[1]
     end_col_pos = #last_line_text
   end
 
@@ -38,13 +42,16 @@ local function select_node(node)
   --   If your operator-pending mapping ends with some text visually selected, Vim will operate on that text.
   --   Otherwise, Vim will operate on the text between the original cursor position and the new position.
   local mode = vim.api.nvim_get_mode()
-  if mode.mode ~= 'v' then
-    vim.api.nvim_cmd({ cmd = 'normal', bang = true, args = { 'v' } }, {})
+  if mode.mode ~= "v" then
+    vim.api.nvim_cmd({ cmd = "normal", bang = true, args = { "v" } }, {})
   end
 
   vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
-  vim.cmd('normal! o')
-  vim.api.nvim_win_set_cursor(0, { end_row_pos, end_col_pos > 0 and end_col_pos - 1 or 0 })
+  vim.cmd("normal! o")
+  vim.api.nvim_win_set_cursor(
+    0,
+    { end_row_pos, end_col_pos > 0 and end_col_pos - 1 or 0 }
+  )
 end
 
 M.select_treesitter_node = function()
@@ -82,7 +89,7 @@ M.increment_selection = function()
       if not ok or root_parser == nil then
         return
       end
-      root_parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
+      root_parser:parse({ vim.fn.line("w0") - 1, vim.fn.line("w$") })
 
       local range = { node:range() }
       local current_parser = root_parser:language_for_range(range)
@@ -127,12 +134,27 @@ M.decrement_selection = function()
 end
 
 M.setup = function(config)
-  local incr_key = config.incr_key and config.incr_key or '<tab>'
-  local decr_key = config.decr_key and config.decr_key or '<s-tab>'
+  local incr_key = config.incr_key and config.incr_key or "<tab>"
+  local decr_key = config.decr_key and config.decr_key or "<s-tab>"
 
-  vim.keymap.set({ 'n' }, incr_key, M.select_treesitter_node, { desc = 'Select treesitter node' })
-  vim.keymap.set('x', incr_key, M.increment_selection, { desc = 'Increment selection' })
-  vim.keymap.set('x', decr_key, M.decrement_selection, { desc = 'Decrement selection' })
+  vim.keymap.set(
+    { "n" },
+    incr_key,
+    M.select_treesitter_node,
+    { desc = "Select treesitter node" }
+  )
+  vim.keymap.set(
+    "x",
+    incr_key,
+    M.increment_selection,
+    { desc = "Increment selection" }
+  )
+  vim.keymap.set(
+    "x",
+    decr_key,
+    M.decrement_selection,
+    { desc = "Decrement selection" }
+  )
 end
 
 return M
