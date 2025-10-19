@@ -1,3 +1,6 @@
+-- renovate: datasource=github-releases depName=folke/lazy.nvim
+local lazy_version = 'v11.16.0'
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -6,7 +9,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     'git',
     'clone',
     '--filter=blob:none',
-    '--branch=v11.16.0',
+    '--branch=' .. lazy_version,
     lazyrepo,
     lazypath,
   })
