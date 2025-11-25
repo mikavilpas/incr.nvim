@@ -6,6 +6,7 @@
 >
 > - export all functions for easier usage in custom mappings
 > - add end-to-end tests for easy maintainability
+> - `is_active()` function to check if there is an active selection
 
 This plugin uses nvim-treesitter to select nodes incrementally. You can start
 selection in normal mode by clicking `tab` and then repeatedly clicking `tab`

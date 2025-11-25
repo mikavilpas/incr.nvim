@@ -2,6 +2,14 @@ local M = {}
 
 _G.selected_nodes = {} ---@type TSNode[]
 
+function M.is_active()
+  local is_visual = vim.fn.mode():find("[vV]") ~= nil
+  if not is_visual then
+    return false
+  end
+  return #_G.selected_nodes > 0
+end
+
 local function get_node_at_cursor()
   local cursor = vim.api.nvim_win_get_cursor(0)
   local row = cursor[1] - 1
