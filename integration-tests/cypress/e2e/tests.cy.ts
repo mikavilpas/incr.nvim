@@ -58,6 +58,13 @@ describe("the plugin", () => {
       isNotHighlighted("item2")
       isNotHighlighted("item3")
       getIsActive(nvim).should("equal", false)
+
+      // make sure is_active() is false when entering standard visual mode
+      //
+      // This detects a regression where it would stay true after the first
+      // incremental-selection
+      cy.typeIntoTerminal("viw")
+      getIsActive(nvim).should("equal", false)
     })
   })
 })
