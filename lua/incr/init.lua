@@ -30,6 +30,17 @@ local function get_node_at_cursor()
 end
 
 local function select_node(node)
+  -- detect when the mode changes from visual to something else and clear the selected nodes
+  local group = vim.api.nvim_create_augroup("IncrSelection", { clear = true })
+  vim.api.nvim_create_autocmd("ModeChanged", {
+    group = group,
+    pattern = "v:*",
+    once = true,
+    callback = function()
+      _G.selected_nodes = {}
+    end,
+  })
+
   if not node then
     return
   end
