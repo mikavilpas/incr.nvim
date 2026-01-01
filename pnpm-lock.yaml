@@ -46,8 +46,8 @@ importers:
         specifier: 9.39.2
         version: 9.39.2
       '@tui-sandbox/library':
-        specifier: 11.11.2
-        version: 11.11.2(cypress@15.8.1)(prettier@3.7.4)(type-fest@5.3.1)(typescript@5.9.3)(wait-on@9.0.3)(zod@4.2.1)
+        specifier: 12.2.2
+        version: 12.2.2(cypress@15.8.1)(prettier@3.7.4)(type-fest@5.3.1)(typescript@5.9.3)(wait-on@9.0.3)(zod@4.2.1)
       '@types/node':
         specifier: 24.10.4
         version: 24.10.4
@@ -437,19 +437,19 @@ packages:
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
-  '@trpc/client@11.8.0':
-    resolution: {integrity: sha512-imJQeESX1hAapDaC4JB91yvXg41AZfBuTh/scnEiN/hAubZa5s/ikp0n+w29q2GCf+hREkr3WptUFKFJoDAIug==}
+  '@trpc/client@11.8.1':
+    resolution: {integrity: sha512-L/SJFGanr9xGABmuDoeXR4xAdHJmsXsiF9OuH+apecJ+8sUITzVT1EPeqp0ebqA6lBhEl5pPfg3rngVhi/h60Q==}
     peerDependencies:
-      '@trpc/server': 11.8.0
+      '@trpc/server': 11.8.1
       typescript: '>=5.7.2'
 
-  '@trpc/server@11.8.0':
-    resolution: {integrity: sha512-DphyQnLuyX2nwJCQGWQ9zYz4hZGvRhSBqDhQ0SH3tDhQ3PU4u68xofA0pJ741Ir4InEAFD+TtJVLAQy+wVOkiQ==}
+  '@trpc/server@11.8.1':
+    resolution: {integrity: sha512-P4rzZRpEL7zDFgjxK65IdyH0e41FMFfTkQkuq0BA5tKcr7E6v9/v38DEklCpoDN6sPiB1Sigy/PUEzHENhswDA==}
     peerDependencies:
       typescript: '>=5.7.2'
 
-  '@tui-sandbox/library@11.11.2':
-    resolution: {integrity: sha512-GF/UVod8+13na6ImAdZ6+m8yiCeHK7ZtQpU/AxAhfeRoZ6Oox7Q7GQMH8cnBPhjDNcAwtqp3TmTPFhknmhgq1g==}
+  '@tui-sandbox/library@12.2.2':
+    resolution: {integrity: sha512-LbSytOnlJfIUPg2s8t4obAiVYNVLZFDTttswomqYvBIMFZw8DWPUB5HtLzRA7pk40JxM2vkJgntlMcV64iaIag==}
     engines: {node: '>=24.0.0'}
     hasBin: true
     peerDependencies:
@@ -573,18 +573,17 @@ packages:
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     hasBin: true
 
-  '@xterm/addon-fit@0.10.0':
-    resolution: {integrity: sha512-UFYkDm4HUahf2lnEyHvio51TNGiLK66mqP2JoATy7hRZeXaGMRDr00JiSF7m63vR5WKATF605yEggJKsw0JpMQ==}
-    peerDependencies:
-      '@xterm/xterm': ^5.0.0
+  '@xterm/addon-clipboard@0.2.0':
+    resolution: {integrity: sha512-Dl31BCtBhLaUEECUbEiVcCLvLBbaeGYdT7NofB8OJkGTD3MWgBsaLjXvfGAD4tQNHhm6mbKyYkR7XD8kiZsdNg==}
 
-  '@xterm/addon-unicode11@0.8.0':
-    resolution: {integrity: sha512-LxinXu8SC4OmVa6FhgwsVCBZbr8WoSGzBl2+vqe8WcQ6hb1r6Gj9P99qTNdPiFPh4Ceiu2pC8xukZ6+2nnh49Q==}
-    peerDependencies:
-      '@xterm/xterm': ^5.0.0
+  '@xterm/addon-fit@0.11.0':
+    resolution: {integrity: sha512-jYcgT6xtVYhnhgxh3QgYDnnNMYTcf8ElbxxFzX0IZo+vabQqSPAjC3c1wJrKB5E19VwQei89QCiZZP86DCPF7g==}
 
-  '@xterm/xterm@5.5.0':
-    resolution: {integrity: sha512-hqJHYaQb5OptNunnyAnkHyM8aCjZ1MEIDTQu1iIbbTD/xops91NB5yq1ZK/dC2JDbVWtF23zUtl9JE2NqwT87A==}
+  '@xterm/addon-unicode11@0.9.0':
+    resolution: {integrity: sha512-FxDnYcyuXhNl+XSqGZL/t0U9eiNb/q3EWT5rYkQT/zuig8Gz/VagnQANKHdDWFM2lTMk9ly0EFQxxxtZUoRetw==}
+
+  '@xterm/xterm@6.0.0':
+    resolution: {integrity: sha512-TQwDdQGtwwDt+2cgKDLn0IRaSxYu1tSUjgKarSDkUM0ZNiSRXFpjxEsvc/Zgc5kq5omJ+V0a8/kIM2WD3sMOYg==}
 
   accepts@2.0.0:
     resolution: {integrity: sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==}
@@ -1577,6 +1576,9 @@ packages:
   joi@18.0.1:
     resolution: {integrity: sha512-IiQpRyypSnLisQf3PwuN2eIHAsAIGZIrLZkd4zdvIar2bDyhM91ubRjy8a3eYablXsh9BeI/c7dmPYHca5qtoA==}
     engines: {node: '>= 20'}
+
+  js-base64@3.7.8:
+    resolution: {integrity: sha512-hNngCeKxIUQiEUN3GPJOkz4wF/YvdUdbNL9hsBcMQTkKzboD7T/q3OYOuuPZLUE6dBxSGpwhk5mwuDud7JVAow==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -2950,23 +2952,24 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
-  '@trpc/client@11.8.0(@trpc/server@11.8.0(typescript@5.9.3))(typescript@5.9.3)':
+  '@trpc/client@11.8.1(@trpc/server@11.8.1(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
-      '@trpc/server': 11.8.0(typescript@5.9.3)
+      '@trpc/server': 11.8.1(typescript@5.9.3)
       typescript: 5.9.3
 
-  '@trpc/server@11.8.0(typescript@5.9.3)':
+  '@trpc/server@11.8.1(typescript@5.9.3)':
     dependencies:
       typescript: 5.9.3
 
-  '@tui-sandbox/library@11.11.2(cypress@15.8.1)(prettier@3.7.4)(type-fest@5.3.1)(typescript@5.9.3)(wait-on@9.0.3)(zod@4.2.1)':
+  '@tui-sandbox/library@12.2.2(cypress@15.8.1)(prettier@3.7.4)(type-fest@5.3.1)(typescript@5.9.3)(wait-on@9.0.3)(zod@4.2.1)':
     dependencies:
       '@catppuccin/palette': 1.7.1
-      '@trpc/client': 11.8.0(@trpc/server@11.8.0(typescript@5.9.3))(typescript@5.9.3)
-      '@trpc/server': 11.8.0(typescript@5.9.3)
-      '@xterm/addon-fit': 0.10.0(@xterm/xterm@5.5.0)
-      '@xterm/addon-unicode11': 0.8.0(@xterm/xterm@5.5.0)
-      '@xterm/xterm': 5.5.0
+      '@trpc/client': 11.8.1(@trpc/server@11.8.1(typescript@5.9.3))(typescript@5.9.3)
+      '@trpc/server': 11.8.1(typescript@5.9.3)
+      '@xterm/addon-clipboard': 0.2.0
+      '@xterm/addon-fit': 0.11.0
+      '@xterm/addon-unicode11': 0.9.0
+      '@xterm/xterm': 6.0.0
       concurrently: 9.2.1
       cors: 2.8.5
       cypress: 15.8.1
@@ -3142,15 +3145,15 @@ snapshots:
     dependencies:
       commander: 14.0.1
 
-  '@xterm/addon-fit@0.10.0(@xterm/xterm@5.5.0)':
+  '@xterm/addon-clipboard@0.2.0':
     dependencies:
-      '@xterm/xterm': 5.5.0
+      js-base64: 3.7.8
 
-  '@xterm/addon-unicode11@0.8.0(@xterm/xterm@5.5.0)':
-    dependencies:
-      '@xterm/xterm': 5.5.0
+  '@xterm/addon-fit@0.11.0': {}
 
-  '@xterm/xterm@5.5.0': {}
+  '@xterm/addon-unicode11@0.9.0': {}
+
+  '@xterm/xterm@6.0.0': {}
 
   accepts@2.0.0:
     dependencies:
@@ -4209,6 +4212,8 @@ snapshots:
       '@hapi/tlds': 1.1.3
       '@hapi/topo': 6.0.2
       '@standard-schema/spec': 1.0.0
+
+  js-base64@3.7.8: {}
 
   js-tokens@4.0.0: {}
 
