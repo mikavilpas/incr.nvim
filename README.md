@@ -19,6 +19,7 @@ Using lazyvim.
 ```lua
 {
   'mikavilpas/incr.nvim',
+  version = "*", -- use latest version tag, recommended
   config = true,
 },
 ```
@@ -28,6 +29,7 @@ If you want to override default keys then use something like this:
 ```lua
 {
   'mikavilpas/incr.nvim',
+  version = "*", -- use latest version tag, recommended
   opts = {
     incr_key = '<tab>', -- increment selection key
     decr_key = '<s-tab>', -- decrement selection key
