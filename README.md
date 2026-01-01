@@ -5,7 +5,8 @@
 > The additions include
 >
 > - export all functions for easier usage in custom mappings
-> - add end-to-end tests for easy maintainability
+> - add end-to-end tests for easy maintainability. Tested against neovim nightly
+>   and stable versions
 > - `is_active()` function to check if there is an active selection
 
 This plugin uses nvim-treesitter to select nodes incrementally. You can start
