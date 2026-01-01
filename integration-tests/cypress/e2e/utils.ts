@@ -1,8 +1,5 @@
 import { flavors } from "@catppuccin/palette"
-import {
-  rgbify,
-  textIsVisibleWithBackgroundColor,
-} from "@tui-sandbox/library/dist/src/client"
+import { rgbify, textIsVisibleWithBackgroundColor } from "@tui-sandbox/library"
 
 export const isHighlighted = (text: string): Cypress.Chainable<JQuery> =>
   textIsVisibleWithBackgroundColor(
