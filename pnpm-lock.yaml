@@ -57,8 +57,8 @@ importers:
         specifier: 3.3.0
         version: 3.3.0
       eslint-plugin-oxlint:
-        specifier: 1.42.0
-        version: 1.42.0
+        specifier: 1.43.0
+        version: 1.43.0
       oxlint-tsgolint:
         specifier: 0.11.4
         version: 0.11.4
@@ -1087,8 +1087,8 @@ packages:
     resolution: {integrity: sha512-brcKcxGnISN2CcVhXJ/kEQlNa0MEfGRtwKtWA16SkqXHKitaKIMrfemJKLKX1YqDU5C/5JY3PvZXd5jEW04e0Q==}
     engines: {node: '>=5.0.0'}
 
-  eslint-plugin-oxlint@1.42.0:
-    resolution: {integrity: sha512-3hB/TDbS0f+8ZnPffl0Z/wZ7Yc5NeY5slrxG60kEWInAA9047pdqRcv+Ckk/5KiL3HS2vWtHvmkavPKSFZVKxA==}
+  eslint-plugin-oxlint@1.43.0:
+    resolution: {integrity: sha512-SUP8AFLe1D6/jcGenpDu3DrPkDfqbBzoDZqSN0SHAo7CygqAHaltIhBay6y9Lt2Iib7TW7sNPHC22MXmE2XlGw==}
 
   eslint-scope@8.4.0:
     resolution: {integrity: sha512-sNXOfKCn74rt8RICKMvJS7XKV/Xk9kA7DyJr8mJik3S7Cwgy3qlkkmyS2uQB3jiJg6VNdZd/pDBJu0nvG2NlTg==}
@@ -1308,6 +1308,7 @@ packages:
   glob@11.0.3:
     resolution: {integrity: sha512-2Nim7dha1KVkaiF4q6Dj+ngPPMdfvLJEOpZk/jKiUAkqKebpGAWQXAq9z1xu9HKu5lWfqw/FASuccEjyznjPaA==}
     engines: {node: 20 || >=22}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   global-dirs@3.0.1:
@@ -3524,7 +3525,7 @@ snapshots:
 
   eslint-plugin-no-only-tests@3.3.0: {}
 
-  eslint-plugin-oxlint@1.42.0:
+  eslint-plugin-oxlint@1.43.0:
     dependencies:
       jsonc-parser: 3.3.1
 
