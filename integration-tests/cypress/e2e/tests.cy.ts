@@ -65,6 +65,12 @@ describe("the plugin", () => {
       // incremental-selection
       cy.typeIntoTerminal("viw")
       getIsActive(nvim).should("equal", false)
+
+      // also verify for visual line mode (V), which is used for different
+      // keybinding dispatch (e.g. indent motion vs treesitter selection)
+      cy.typeIntoTerminal("{esc}")
+      cy.typeIntoTerminal("V")
+      getIsActive(nvim).should("equal", false)
     })
   })
 })

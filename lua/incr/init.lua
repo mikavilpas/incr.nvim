@@ -1,155 +1,57 @@
 local M = {}
 
-_G.selected_nodes = {} ---@type TSNode[]
+-- Track whether incremental selection is active (started via this plugin).
+-- This lets users check is_active() to conditionally dispatch keybindings.
+local active = false
 
 function M.is_active()
   local is_visual = vim.fn.mode():find("[vV]") ~= nil
   if not is_visual then
     return false
   end
-  return #_G.selected_nodes > 0
+  return active
 end
 
-local function get_node_at_cursor()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  local row = cursor[1] - 1
-  local col = cursor[2]
-
-  local ok, root_parser = pcall(vim.treesitter.get_parser, 0, nil, {})
-  if not ok or not root_parser then
-    return
-  end
-
-  root_parser:parse({ vim.fn.line("w0") - 1, vim.fn.line("w$") })
-  local lang_tree = root_parser:language_for_range({ row, col, row, col })
-
-  return lang_tree:named_node_for_range(
-    { row, col, row, col },
-    { ignore_injections = false }
-  )
-end
-
-local function select_node(node)
-  -- detect when the mode changes from visual to something else and clear the selected nodes
+-- Clear the active flag when leaving visual mode for a non-visual mode.
+-- The builtin select_parent internally does v<Esc> then gv, which
+-- momentarily exits visual mode, so we use vim.schedule to only check
+-- after the dust settles.
+local function clear_on_mode_change()
   local group = vim.api.nvim_create_augroup("IncrSelection", { clear = true })
   vim.api.nvim_create_autocmd("ModeChanged", {
     group = group,
-    pattern = "v:*",
-    once = true,
+    pattern = "[vV\x16]:*",
     callback = function()
-      _G.selected_nodes = {}
+      vim.schedule(function()
+        local mode = vim.fn.mode()
+        if not mode:find("[vV]") then
+          active = false
+          vim.api.nvim_create_augroup("IncrSelection", { clear = true })
+        end
+      end)
     end,
   })
+end
 
-  if not node then
-    return
-  end
-  local start_row, start_col, end_row, end_col = node:range()
+M.select_treesitter_node = function()
+  active = true
+  clear_on_mode_change()
 
-  local last_line = vim.api.nvim_buf_line_count(0)
-  local end_row_pos = math.min(end_row + 1, last_line)
-  local end_col_pos = end_col
-
-  if end_row + 1 > last_line then
-    local last_line_text =
-      vim.api.nvim_buf_get_lines(0, last_line - 1, last_line, true)[1]
-    end_col_pos = #last_line_text
-  end
-
-  -- enter visual mode if normal or operator-pending (no) mode
-  -- Why? According to https://learnvimscriptthehardway.stevelosh.com/chapters/15.html
-  --   If your operator-pending mapping ends with some text visually selected, Vim will operate on that text.
-  --   Otherwise, Vim will operate on the text between the original cursor position and the new position.
+  -- enter visual mode so select_parent can get the cursor position as a range
   local mode = vim.api.nvim_get_mode()
   if mode.mode ~= "v" then
     vim.api.nvim_cmd({ cmd = "normal", bang = true, args = { "v" } }, {})
   end
 
-  vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
-  vim.cmd("normal! o")
-  vim.api.nvim_win_set_cursor(
-    0,
-    { end_row_pos, end_col_pos > 0 and end_col_pos - 1 or 0 }
-  )
-end
-
-M.select_treesitter_node = function()
-  _G.selected_nodes = {}
-
-  local current_node = get_node_at_cursor()
-  if not current_node then
-    return
-  end
-
-  table.insert(_G.selected_nodes, current_node)
-  select_node(current_node)
+  require("vim.treesitter._select").select_parent(1)
 end
 
 M.increment_selection = function()
-  if #_G.selected_nodes == 0 then
-    return
-  end
-
-  local current_node = _G.selected_nodes[#_G.selected_nodes]
-
-  if not current_node then
-    return
-  end
-
-  local node = current_node
-  local root_searched = false
-  while true do
-    local parent = node:parent()
-    if not parent then
-      if root_searched then
-        return
-      end
-      local ok, root_parser = pcall(vim.treesitter.get_parser)
-      if not ok or root_parser == nil then
-        return
-      end
-      root_parser:parse({ vim.fn.line("w0") - 1, vim.fn.line("w$") })
-
-      local range = { node:range() }
-      local current_parser = root_parser:language_for_range(range)
-
-      if root_parser ~= current_parser then
-        local parser = current_parser:parent()
-        if parser == nil then
-          return
-        end
-        current_parser = parser
-      end
-
-      if root_parser == current_parser then
-        root_searched = true
-      end
-
-      parent = current_parser:named_node_for_range(range)
-      if parent == nil then
-        return
-      end
-    end
-
-    local range = { node:range() }
-    local parent_range = { parent:range() }
-    if not vim.deep_equal(range, parent_range) then
-      table.insert(_G.selected_nodes, parent)
-      select_node(parent)
-      return
-    end
-    node = parent
-  end
+  require("vim.treesitter._select").select_parent(1)
 end
 
 M.decrement_selection = function()
-  if #_G.selected_nodes > 1 then
-    table.remove(_G.selected_nodes)
-    local current_node = _G.selected_nodes[#_G.selected_nodes]
-    if current_node then
-      select_node(current_node)
-    end
-  end
+  require("vim.treesitter._select").select_child(1)
 end
 
 M.setup = function(config)
