@@ -13,9 +13,11 @@ This plugin uses nvim-treesitter to select nodes incrementally. You can start
 selection in normal mode by clicking `tab` and then repeatedly clicking `tab`
 select more scope. You can use `s-tab` to decrement selection.
 
+Requires **Neovim >= 0.12.0**.
+
 ## Installation
 
-Using lazyvim.
+Using lazy.nvim:
 
 ```lua
 {
@@ -25,34 +27,25 @@ Using lazyvim.
 },
 ```
 
-If you want to override default keys then use something like this:
+If you want to override default keys:
 
 ```lua
 {
   'mikavilpas/incr.nvim',
   version = "*", -- use latest version tag, recommended
   opts = {
-    incr_key = '<tab>', -- increment selection key
-    decr_key = '<s-tab>', -- decrement selection key
+    incr_key = '<tab>', -- increment selection key (normal + visual)
+    decr_key = '<s-tab>', -- decrement selection key (visual)
   },
 }
 ```
 
 ## History
 
-nvim-treesitter main branch drop increment selection feature. From
-<https://github.com/nvim-treesitter/nvim-treesitter/issues/4767#issue-1698676665>:
+This started as a fork of <https://github.com/daliusd/incr.nvim>, which
+extracted the incremental selection feature after it was
+[removed from nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767#issue-1698676665).
 
-> incremental-selection mostly served as a proof-of-concept for non-highlighting
-> uses of tree-sitter; if people are actively using it, they should consider
-> moving it to a separate plugin (or seeing if textobjects don't serve this
-> purposes even better); alternatively rewrite as simple node and scope
-> textobjects;
-
-This is basically gist of it. Initially I have tried to move this to my nvim
-configuration as simple solution, but found out that simple solution was lacking
-something as tree-sitter methods are not necessary doing what their
-documentation says.
-
-This does not match original nvim-treesitter incremental-selection feature - if
-you are missing something feel free to create issue or even better PR.
+Since Neovim 0.12.0 ships built-in treesitter incremental selection, this plugin
+was refactored to be a thin wrapper around the builtin, keeping only the
+keybinding setup and `is_active()` API.
