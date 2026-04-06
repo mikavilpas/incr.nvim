@@ -73,4 +73,38 @@ describe("the plugin", () => {
       getIsActive(nvim).should("equal", false)
     })
   })
+
+  it("works together with the builtin ]n (select next sibling node)", () => {
+    cy.startNeovim({
+      filename: "initial-file.lua",
+    }).then(() => {
+      cy.contains("local items")
+
+      // move cursor to "item1"
+      cy.typeIntoTerminal("f1")
+
+      // start incremental selection - should select the string content node
+      cy.typeIntoTerminal("{enter}")
+      isHighlighted("item")
+      isNotHighlighted("item2")
+
+      // expand to select the full string "item1", then the field node
+      // AST: field > string > string_content
+      // We need to reach the `field` level so ]n can jump between sibling fields
+      cy.typeIntoTerminal("{enter}")
+      isHighlighted('"item1"')
+
+      // use the builtin ]n to select the next sibling (field containing "item2")
+      cy.typeIntoTerminal("]n")
+      isHighlighted('"item2"')
+      isNotHighlighted('"item1"')
+      isNotHighlighted('"item3"')
+
+      // and use the reverse mapping to go back to select "item1"
+      cy.typeIntoTerminal("[n")
+      isHighlighted('"item1"')
+      isNotHighlighted('"item2"')
+      isNotHighlighted('"item3"')
+    })
+  })
 })
