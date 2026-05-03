@@ -1,6 +1,6 @@
 import z from "zod"
-import type { NeovimContext } from "../support/tui-sandbox"
-import { isHighlighted, isNotHighlighted } from "./utils"
+import type { NeovimContext } from "../support/tui-sandbox.js"
+import { isHighlighted, isNotHighlighted } from "./utils.js"
 
 const getIsActive = (nvim: NeovimContext): Cypress.Chainable<boolean> => {
   return nvim
