@@ -11,9 +11,11 @@ on:
       - main
 
 jobs:
-  prettier:
+  oxfmt:
     runs-on: ubuntu-24.04
-    name: prettier
+    name: oxfmt
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
@@ -27,7 +29,7 @@ jobs:
           node-version-file: .nvmrc
           cache: "pnpm"
       - run: pnpm install
-      - run: pnpm prettier
+      - run: pnpm run format:check
 
   stylua:
     name: stylua

@@ -1,4 +1,5 @@
 import z from "zod"
+
 import type { NeovimContext } from "../support/tui-sandbox.js"
 import { isHighlighted, isNotHighlighted } from "./utils.js"
 
