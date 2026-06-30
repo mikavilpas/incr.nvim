@@ -16,7 +16,7 @@ jobs:
   build-neovim-nightly:
     runs-on: ubuntu-24.04
     steps:
-      - uses: mikavilpas/neovim-action/build-nightly@ef04210e60a28317d442169fbccdaa010cf90b88 # v3.2.2
+      - uses: mikavilpas/neovim-action/build-nightly@4f1c9a2235ee7428930602c0ba3e4f20377b61d8 # v3.3.0
         with:
           commit: ${{ env.NEOVIM_NIGHTLY_COMMIT }}
 
@@ -44,7 +44,7 @@ jobs:
       - run: pnpm install
 
       - if: matrix.neovim_version == 'nightly'
-        uses: mikavilpas/neovim-action/restore-nightly@ef04210e60a28317d442169fbccdaa010cf90b88 # v3.2.2
+        uses: mikavilpas/neovim-action/restore-nightly@4f1c9a2235ee7428930602c0ba3e4f20377b61d8 # v3.3.0
         with:
           commit: ${{ env.NEOVIM_NIGHTLY_COMMIT }}
 
