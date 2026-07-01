@@ -11,6 +11,8 @@ permissions:
 env:
   # renovate: datasource=git-refs-master packageName=https://github.com/neovim/neovim
   NEOVIM_NIGHTLY_COMMIT: 7945732ed7bb211f91112292a13b51fc3182599b
+  # renovate: datasource=github-releases depName=neovim/neovim
+  NEOVIM_VERSION: v0.12.0
 
 jobs:
   build-neovim-nightly:
@@ -26,7 +28,7 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        neovim_version: ["nightly", "v0.12.0"]
+        neovim_version: ["nightly", "stable"]
 
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -52,7 +54,7 @@ jobs:
         if: matrix.neovim_version != 'nightly'
         with:
           neovim: true
-          version: ${{ matrix.neovim_version }}
+          version: ${{ env.NEOVIM_VERSION }}
 
       - working-directory: integration-tests
         name: Prepare Neovim for e2e tests
@@ -75,4 +77,3 @@ jobs:
           name: cypress-screenshots
           path: integration-tests/cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
-
