@@ -5,3 +5,4 @@ export const config: TestServerConfig = createDefaultConfig(
   process.cwd(),
   process.env,
 )
+config.formatter = { use: "oxfmt" }
