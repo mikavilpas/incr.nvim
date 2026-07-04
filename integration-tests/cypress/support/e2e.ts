@@ -13,8 +13,7 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
-import "./commands.ts"
+// oxlint-disable-next-line import/no-unassigned-import
 import "./tui-sandbox.ts"
 
 before(function () {
