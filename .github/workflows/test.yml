@@ -12,7 +12,7 @@ env:
   # renovate: datasource=git-refs-master packageName=https://github.com/neovim/neovim
   NEOVIM_NIGHTLY_COMMIT: 7945732ed7bb211f91112292a13b51fc3182599b
   # renovate: datasource=github-releases depName=neovim/neovim
-  NEOVIM_VERSION: v0.12.3
+  NEOVIM_VERSION: v0.12.4
 
 jobs:
   build-neovim-nightly:
