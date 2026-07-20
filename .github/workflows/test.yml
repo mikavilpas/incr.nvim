@@ -10,7 +10,7 @@ permissions:
 
 env:
   # renovate: datasource=git-refs-master packageName=https://github.com/neovim/neovim
-  NEOVIM_NIGHTLY_COMMIT: 01c4d37959227ccb7a7fce1a8d63616ef2ed7479
+  NEOVIM_NIGHTLY_COMMIT: a787a314900ecf98c759a82030ac28992896cc88
   # renovate: datasource=github-releases depName=neovim/neovim
   NEOVIM_VERSION: v0.12.4
 
