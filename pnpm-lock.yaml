@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@mikavilpas/oxfmt-config':
+        specifier: 3.0.0
+        version: 3.0.0(oxfmt@0.59.0)
       eslint-plugin-no-only-tests:
         specifier: 3.4.0
         version: 3.4.0
@@ -257,6 +260,11 @@ packages:
 
   '@hapi/topo@6.0.2':
     resolution: {integrity: sha512-KR3rD5inZbGMrHmgPxsJ9dbi6zEK+C3ZwUwTa+eMwWLz7oijWUTWD2pMSNNYJAU6Qq+65NkxXjqHr/7LM2Xkqg==}
+
+  '@mikavilpas/oxfmt-config@3.0.0':
+    resolution: {integrity: sha512-4DwrRdllfMa4hxgbjFxkdvt0RY3Dr9qFoRDwfh4sfb3wjGsM0WYNTQK/xCxQ3A0T1b7h2Yxteyedi7mPjZw5Pw==}
+    peerDependencies:
+      oxfmt: ^0.59.0
 
   '@msgpack/msgpack@2.8.0':
     resolution: {integrity: sha512-h9u4u/jiIRKbq25PM+zymTyW6bhTzELvOoUd+AvYriWOAKpLGnIamaET3pnHYoI5iYphAHBI4ayx0MehR+VVPQ==}
@@ -1732,6 +1740,10 @@ snapshots:
   '@hapi/topo@6.0.2':
     dependencies:
       '@hapi/hoek': 11.0.7
+
+  '@mikavilpas/oxfmt-config@3.0.0(oxfmt@0.59.0)':
+    dependencies:
+      oxfmt: 0.59.0
 
   '@msgpack/msgpack@2.8.0': {}
 

@@ -8,7 +8,7 @@ const getIsActive = (nvim: NeovimContext): Cypress.Chainable<boolean> => {
     .runLuaCode({
       luaCode: `return require("incr").is_active()`,
     })
-    .then((output) => z.boolean().parse(output.value))
+    .then(output => z.boolean().parse(output.value))
 }
 
 describe("the plugin", () => {
@@ -19,7 +19,7 @@ describe("the plugin", () => {
   it("can expand and collapse the highlighting", () => {
     cy.startNeovim({
       filename: "initial-file.lua",
-    }).then((nvim) => {
+    }).then(nvim => {
       // wait until text on the start screen is visible
       cy.contains("local items")
 
