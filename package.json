@@ -6,6 +6,7 @@
   "keywords": [],
   "license": "ISC",
   "author": "",
+  "type": "module",
   "scripts": {
     "dev": "pnpm --filter ./integration-tests/ dev",
     "lint": "oxlint --type-aware --deny-warnings --report-unused-disable-directives",
@@ -14,6 +15,7 @@
     "tui": "pnpm --filter ./integration-tests/ exec tui"
   },
   "devDependencies": {
+    "@mikavilpas/oxfmt-config": "3.0.0",
     "eslint-plugin-no-only-tests": "3.4.0",
     "oxfmt": "0.59.0",
     "oxlint": "1.74.0",
