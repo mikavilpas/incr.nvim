@@ -9,17 +9,18 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter ./integration-tests/ dev",
-    "lint": "oxlint --type-aware --deny-warnings --report-unused-disable-directives",
+    "lint": "oxlint",
     "markdownlint": "rumdl check",
     "format:check": "oxfmt --check",
     "tui": "pnpm --filter ./integration-tests/ exec tui"
   },
   "devDependencies": {
-    "@mikavilpas/oxfmt-config": "3.0.0",
+    "@mikavilpas/oxfmt-config": "3.0.2",
+    "@mikavilpas/oxlint-config": "1.1.0",
     "eslint-plugin-no-only-tests": "3.4.0",
     "oxfmt": "0.59.0",
     "oxlint": "1.74.0",
-    "oxlint-tsgolint": "0.25.0"
+    "oxlint-tsgolint": "7.0.2001"
   },
   "packageManager": "pnpm@10.34.5",
   "pnpm": {
