@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@mikavilpas/oxfmt-config':
-        specifier: 3.0.2
-        version: 3.0.2(oxfmt@0.61.0)
+        specifier: 3.0.3
+        version: 3.0.3(oxfmt@0.61.0)
       '@mikavilpas/oxlint-config':
         specifier: 1.1.0
         version: 1.1.0(oxlint-tsgolint@7.0.2001)(oxlint@1.76.0(oxlint-tsgolint@7.0.2001))
@@ -264,10 +264,10 @@ packages:
   '@hapi/topo@6.0.2':
     resolution: {integrity: sha512-KR3rD5inZbGMrHmgPxsJ9dbi6zEK+C3ZwUwTa+eMwWLz7oijWUTWD2pMSNNYJAU6Qq+65NkxXjqHr/7LM2Xkqg==}
 
-  '@mikavilpas/oxfmt-config@3.0.2':
-    resolution: {integrity: sha512-EN31oQttxjYzs31S3wwnyS+aS3DkSwHXPYP1Qx0DDWa7BGUbxmIFAQr6IdJNIIMv4qN6gT9doyN2ZIoGGC7z0Q==}
+  '@mikavilpas/oxfmt-config@3.0.3':
+    resolution: {integrity: sha512-dnApUBbQOz/MWYsU6I3zSO6ZgW02WIplMkBMGJdtMAP+MK9sFrk1rZI9t30hQMTgL7E6/sKZ3xy8sRNelss8tw==}
     peerDependencies:
-      oxfmt: ^0.59.0
+      oxfmt: '>=0.59.0'
 
   '@mikavilpas/oxlint-config@1.1.0':
     resolution: {integrity: sha512-WC03JSahD1ExZEsb4ux1Gcxmqi8qDAQpV08cJd+P/hIkcCpPNMFJ+GGq78FsO0a4v22H8KPAaSOoRGzw2MBf4Q==}
@@ -1759,7 +1759,7 @@ snapshots:
     dependencies:
       '@hapi/hoek': 11.0.7
 
-  '@mikavilpas/oxfmt-config@3.0.2(oxfmt@0.61.0)':
+  '@mikavilpas/oxfmt-config@3.0.3(oxfmt@0.61.0)':
     dependencies:
       oxfmt: 0.61.0
 
