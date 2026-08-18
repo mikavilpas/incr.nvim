@@ -13,7 +13,7 @@
     "@types/node": "24.13.3",
     "@types/tinycolor2": "1.4.6",
     "assert": "2.1.0",
-    "concurrently": "10.0.4",
+    "concurrently": "10.0.5",
     "cypress": "15.20.1",
     "oxlint-tsgolint": "7.0.2001",
     "tinycolor2": "1.6.0",
