@@ -12,8 +12,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3(oxfmt@0.63.0)
       '@mikavilpas/oxlint-config':
-        specifier: 1.1.0
-        version: 1.1.0(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))
+        specifier: 3.0.1
+        version: 3.0.1(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))
       eslint-plugin-no-only-tests:
         specifier: 3.4.0
         version: 3.4.0
@@ -269,11 +269,11 @@ packages:
     peerDependencies:
       oxfmt: '>=0.59.0'
 
-  '@mikavilpas/oxlint-config@1.1.0':
-    resolution: {integrity: sha512-WC03JSahD1ExZEsb4ux1Gcxmqi8qDAQpV08cJd+P/hIkcCpPNMFJ+GGq78FsO0a4v22H8KPAaSOoRGzw2MBf4Q==}
+  '@mikavilpas/oxlint-config@3.0.1':
+    resolution: {integrity: sha512-Sp5hxzIfxDxKPkMrBNzZRnq7QjwZWsIjrt9uOzai/k/ZKKe9zzkBhdxCXA4jLOVSTmlv4BXh7rIWRdaAGc6+9g==}
     peerDependencies:
-      oxlint: ^1.74.0
-      oxlint-tsgolint: ^7.0.2001
+      oxlint: '>=1.74.0'
+      oxlint-tsgolint: '>=7.0.2001'
 
   '@msgpack/msgpack@2.8.0':
     resolution: {integrity: sha512-h9u4u/jiIRKbq25PM+zymTyW6bhTzELvOoUd+AvYriWOAKpLGnIamaET3pnHYoI5iYphAHBI4ayx0MehR+VVPQ==}
@@ -1880,7 +1880,7 @@ snapshots:
     dependencies:
       oxfmt: 0.63.0
 
-  '@mikavilpas/oxlint-config@1.1.0(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))':
+  '@mikavilpas/oxlint-config@3.0.1(oxlint-tsgolint@7.0.2001)(oxlint@1.78.0(oxlint-tsgolint@7.0.2001))':
     dependencies:
       oxlint: 1.78.0(oxlint-tsgolint@7.0.2001)
       oxlint-tsgolint: 7.0.2001
