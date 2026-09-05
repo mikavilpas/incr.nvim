@@ -9,7 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "@catppuccin/palette": "1.8.0",
-    "@tui-sandbox/library": "13.0.2",
+    "@tui-sandbox/library": "13.0.3",
     "@types/node": "24.13.3",
     "@types/tinycolor2": "1.4.6",
     "assert": "2.1.0",
@@ -17,9 +17,9 @@
     "cypress": "16.0.0",
     "oxlint-tsgolint": "7.0.2001",
     "tinycolor2": "1.6.0",
-    "type-fest": "5.8.0",
+    "type-fest": "5.9.0",
     "typescript": "7.0.2",
     "wait-on": "9.1.0",
-    "zod": "4.4.3"
+    "zod": "4.5.4"
   }
 }
