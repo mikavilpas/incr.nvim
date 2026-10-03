@@ -22,14 +22,8 @@ export const MyTestDirectorySchema = z.object({
           name: z.literal("nvim/"),
           type: z.literal("directory"),
           contents: z.object({
-            "init.lua": z.object({
-              name: z.literal("init.lua"),
-              type: z.literal("file"),
-            }),
-            "prepare.lua": z.object({
-              name: z.literal("prepare.lua"),
-              type: z.literal("file"),
-            }),
+            "init.lua": z.object({ name: z.literal("init.lua"), type: z.literal("file") }),
+            "prepare.lua": z.object({ name: z.literal("prepare.lua"), type: z.literal("file") }),
           }),
         }),
       }),
@@ -37,35 +31,18 @@ export const MyTestDirectorySchema = z.object({
     "config-modifications": z.object({
       name: z.literal("config-modifications/"),
       type: z.literal("directory"),
-      contents: z.object({
-        "foo.lua": z.object({
-          name: z.literal("foo.lua"),
-          type: z.literal("file"),
-        }),
-      }),
+      contents: z.object({ "foo.lua": z.object({ name: z.literal("foo.lua"), type: z.literal("file") }) }),
     }),
     highlights: z.object({
       name: z.literal("highlights/"),
       type: z.literal("directory"),
       contents: z.object({
-        "file_1.txt": z.object({
-          name: z.literal("file_1.txt"),
-          type: z.literal("file"),
-        }),
-        "file_2.txt": z.object({
-          name: z.literal("file_2.txt"),
-          type: z.literal("file"),
-        }),
-        "file_3.txt": z.object({
-          name: z.literal("file_3.txt"),
-          type: z.literal("file"),
-        }),
+        "file_1.txt": z.object({ name: z.literal("file_1.txt"), type: z.literal("file") }),
+        "file_2.txt": z.object({ name: z.literal("file_2.txt"), type: z.literal("file") }),
+        "file_3.txt": z.object({ name: z.literal("file_3.txt"), type: z.literal("file") }),
       }),
     }),
-    "initial-file.lua": z.object({
-      name: z.literal("initial-file.lua"),
-      type: z.literal("file"),
-    }),
+    "initial-file.lua": z.object({ name: z.literal("initial-file.lua"), type: z.literal("file") }),
   }),
 })
 
